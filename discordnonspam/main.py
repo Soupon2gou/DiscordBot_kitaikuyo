@@ -22,11 +22,11 @@ from niconico import NicoNico
 from spotdl import Spotdl
 
 
-token = "MTExNTE3ODg3NjIzOTM0Nzc0NA.GWXlm-.7oapHLYww1UH2i6nJVi2ic3I9Pr8gI9jLAQADc"
 message_content = "キタキタ～ン"
 #channel_id = "816220744471412748"
 message_count = 1 # 送信するメッセージの数
 
+DISCORD_BOT_TOKEN = getenv("token")
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 
@@ -92,5 +92,5 @@ async def yuruyuri(ctx):
 
 
 # ボットを実行
-bot.run(token)
+bot.run(DISCORD_BOT_TOKEN)
 
