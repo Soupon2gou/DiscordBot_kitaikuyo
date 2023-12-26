@@ -26,9 +26,11 @@ message_content = "キタキタ～ン"
 #channel_id = "816220744471412748"
 message_count = 1 # 送信するメッセージの数
 
+# ボットの設定
 DISCORD_BOT_TOKEN = getenv("token")
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix='!', intents=intents)
 
 # Tweepy
 #print(os.getenv("CONSUMER_KEY"))
@@ -52,8 +54,7 @@ twauth.set_access_token(TWITTER_ACCESS_TOKEN_KEY, TWITTER_ACCESS_TOKEN_SECRET)
 twapi = tweepy.API(twauth)
 
 
-# ボットの設定
-bot = commands.Bot(command_prefix='!', intents=intents)
+
 
 
 @bot.event
