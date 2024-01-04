@@ -149,30 +149,33 @@ async def stamp(ctx):
     # メッセージが送られてきたチャンネルに送る
     await ctx.channel.send(content)
 
-# ぼざろ画像を送信
-# @bot.command(aliases=["bozaro"])
-# async def bozaro_stamp(ctx):
-#     guild = bot.get_guild(MANBOU_GUILD_ID)
+#ぼざろ画像を送信
+@bot.command(aliases=["bozaro"])
+async def bozaro_stamp(ctx):
+    guild = bot.get_guild(MANBOU_GUILD_ID)
 
-#     channel = guild.get_channel(BOZARO_CHANNEL_ID)
+    channel = guild.get_channel(BOZARO_CHANNEL_ID)
 
-#     bozaro_channel_messages = [message async for message in channel.history(limit=None)]
+    bozaro_channel_messages = [message async for message in channel.history(limit=None)]
 
-#     random_bozaro = random.choice(bozaro_channel_messages)
+    random_bozaro = random.choice(bozaro_channel_messages)
 
-#     content = random_bozaro.attachments[0].url if random_bozaro.content == "" else random_bozaro.content
+    content = random_bozaro.attachments[0].url if random_bozaro.content == "" else random_bozaro.content
 
-#     # メッセージが送られてきたチャンネルに送る
-#     await ctx.channel.send(content)
+    # メッセージが送られてきたチャンネルに送る
+    await ctx.channel.send(content)
 
 # ゆるゆりを送信
 @bot.command()
 async def yuruyuri(ctx):
-    tweets = twapi.search_tweets(q="from:@YuruYuriBot1", tweet_mode="extended", include_entities=True, count=1)
+    tweets = twapi.search_tweets(q="from:@Generative_Ex", count=1)
+    #print(tweets)
     for tweet in tweets:
-        media = tweet.entities["media"]
+        media = tweet.entities["urls"]
+        #print(media)
         for m in media:
-            origin = m["media_url"]
+            origin = m["url"]
+            print(origin)
             await ctx.channel.send(origin)
 
 # ボットを実行
